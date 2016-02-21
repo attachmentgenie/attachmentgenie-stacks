@@ -2,7 +2,6 @@ class stacks::bootstrap (
   $motd         = false,
   $monitor_node = true,
 ) {
-  class { '::motd': }
   class { '::profiles::accounts': }
   class { '::profiles::icinga': }
   class { '::profiles::firewall': }
@@ -12,7 +11,7 @@ class stacks::bootstrap (
   class { '::profiles::repositories': }
   class { '::profiles::ssh': }
   class { '::profiles::time': }
-  class { '::puppetmaster::profile_puppet': }
+  class { '::profiles::puppet': }
 
   if $motd {
     motd::register{ 'Stack   : bootstrap': }

@@ -39,7 +39,7 @@ class stacks::pulp (
   Class['::pulp::consumer']->
   Anchor['profile::pulp::server::end']
 
-  class { '::puppetmaster::profile_foreman_proxy': }
+  class { '::profiles::foreman_proxy': }
   class { '::foreman_proxy::plugin::pulp':
     listen_on => 'http',
     version   => 'present',

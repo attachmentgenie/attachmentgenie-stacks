@@ -18,14 +18,14 @@ class stacks::puppetmaster (
   validate_bool($puppetmaster)
   validate_bool($r10k)
 
-  if !defined(Class['::puppetmaster::profile_puppet']) {
-    class { '::puppetmaster::profile_puppet': }
+  if !defined(Class['::profiles::puppet']) {
+    class { '::profiles::puppet': }
   }
   if $activemq {
-    class { '::puppetmaster::profile_activemq': }
+    class { '::profiles::activemq': }
   }
   if $foreman {
-    class { '::puppetmaster::profile_foreman': }
+    class { '::profiles::foreman': }
     Class['::puppet'] ->
     Class['::foreman']
     if $foreman and $foreman_proxy {
@@ -38,31 +38,31 @@ class stacks::puppetmaster (
     }
   }
   if $haproxy_member {
-    class { '::puppetmaster::profile_haproxy_balancermember': }
+    class { '::profiles::haproxy_balancermember': }
   }
   if $mcollective {
-    if !defined(Class['::puppetmaster::profile_mcollective']) {
-      class { '::puppetmaster::profile_mcollective': }
+    if !defined(Class['::profiles::mcollective']) {
+      class { '::profiles::mcollective': }
     }
     if $mcollective_r10k {
-      class { '::puppetmaster::profile_mcollective_r10k': }
-      Class['::puppetmaster::profile_mcollective'] ->
+      class { '::profiles::mcollective_r10k': }
+      Class['::profiles::mcollective'] ->
       Class['::r10k::mcollective']
     }
   }
   if $puppetdb {
-    class { '::puppetmaster::profile_puppetdb': }
+    class { '::profiles::puppetdb': }
     if ($puppetmaster) {
       Class['::puppet::server::service'] ->
       Class['::puppetdb::server']
     }
   }
   if $puppetmaster and $foreman_proxy {
-    class { '::puppetmaster::profile_foreman_proxy': }
+    class { '::profiles::foreman_proxy': }
     Class['::puppet'] ->
     Class['::foreman_proxy']
   }
   if $r10k {
-    class { '::puppetmaster::profile_r10k': }
+    class { '::profiles::r10k': }
   }
 }
