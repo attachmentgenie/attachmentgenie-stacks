@@ -4,8 +4,8 @@ class stacks::prometheus (
 ) {
 
   validate_bool(
-   $grafana_enabled,
-   $prometheus_enabled,
+    $grafana_enabled,
+    $prometheus_enabled,
   )
 
   if $grafana_enabled {
