@@ -13,7 +13,6 @@ fixtures:
     profiles: "https://github.com/attachmentgenie/attachmentgenie-profiles.git"
     puppet: "https://github.com/theforeman/puppet-puppet.git"
     selinux: "https://github.com/jfryman/puppet-selinux.git"
-    stacks: "https://github.com/attachmentgenie/attachmentgenie-stacks.git"
     timezone: "https://github.com/attachmentgenie/attachmentgenie-timezone.git"
   symlinks:
-    "roles": "#{source_dir}"
+    "stacks": "#{source_dir}"
