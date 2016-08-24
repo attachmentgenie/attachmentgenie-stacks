@@ -61,10 +61,6 @@ class stacks::puppetmaster (
   }
   if $puppetdb {
     class { '::profiles::puppetdb': }
-    if ($puppetmaster) {
-      Class['::puppet::server::service'] ->
-      Class['::puppetdb::server']
-    }
   }
   if $puppetmaster and $foreman_proxy {
     class { '::profiles::foreman_proxy': }
