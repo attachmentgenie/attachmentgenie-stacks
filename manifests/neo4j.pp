@@ -1,6 +1,6 @@
 # This class can be used install neo4j.
 #
-# @example when declaring the ufw class
+# @example when declaring the neo4j class
 #  class { '::stacks::neo4j': }
 #
 # @param neo4j (Boolean) Manage neo4j on this node.

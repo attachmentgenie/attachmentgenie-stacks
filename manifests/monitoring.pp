@@ -1,6 +1,6 @@
 # This class can be used install monitoring components
 #
-# @example when declaring the ufw class
+# @example when declaring the monitoring class
 #  class { '::stacks::monitoring': }
 #
 # @param collectd (Boolean) Manage collectd on this node.

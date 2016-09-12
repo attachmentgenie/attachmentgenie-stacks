@@ -1,6 +1,6 @@
 # This class can be used install kafka and zookeeper.
 #
-# @example when declaring the ufw class
+# @example when declaring the kafka class
 #  class { '::stacks::kafka': }
 #
 # @param kafka (Boolean) Manage kafka on this node.

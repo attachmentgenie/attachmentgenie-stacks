@@ -1,6 +1,6 @@
 # This class can be used install prometheus components.
 #
-# @example when declaring the ufw class
+# @example when declaring the prometheus class
 #  class { '::stacks::prometheus': }
 #
 # @param grafana (Boolean) Manage grafana on this node.

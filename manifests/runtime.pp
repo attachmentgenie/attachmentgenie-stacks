@@ -1,6 +1,6 @@
 # This class can be used install runtime components.
 #
-# @example when declaring the ufw class
+# @example when declaring the runtime class
 #  class { '::stacks::runtime': }
 #
 # @param java (Boolean) Manage java on this node.

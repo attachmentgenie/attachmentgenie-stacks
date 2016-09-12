@@ -1,6 +1,6 @@
 # This class can be used to setup a bare minimum node, on top of which we can add the required technology stack.
 #
-# @example when declaring the ufw class
+# @example when declaring the bootstrap class
 #  class { '::stacks::bootstrap': }
 #
 # @param firewall (Boolean) Manage the firewall on this node.

@@ -1,6 +1,6 @@
 # This class can be used install puppetmaster components.
 #
-# @example when declaring the ufw class
+# @example when declaring the puppetmaster class
 #  class { '::stacks::puppetmaster': }
 #
 # @param activemq (Boolean) Manage activemq on this node.
