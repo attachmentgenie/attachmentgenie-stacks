@@ -1,6 +1,6 @@
 # This class can be used install monitoring components
 #
-# @example when declaring the monitoring class
+# @example when declaring the monitroin class
 #  class { '::stacks::monitoring': }
 #
 # @param collectd (Boolean) Manage collectd on this node.
@@ -12,4 +12,10 @@ class stacks::monitoring (
   validate_bool( $collectd,
     $logstash,
   )
+  if $collectd {
+    class { '::collectd': }
+  }
+  if $logstash {
+    class { '::logstash': }
+  }
 }
