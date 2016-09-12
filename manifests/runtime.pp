@@ -1,3 +1,9 @@
+# This class can be used install runtime components.
+#
+# @example when declaring the ufw class
+#  class { '::stacks::runtime': }
+#
+# @param java (Boolean) Manage java on this node.
 class stacks::runtime (
   $java = false,
 ) {

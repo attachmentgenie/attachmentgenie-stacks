@@ -1,3 +1,18 @@
+# This class can be used install puppetmaster components.
+#
+# @example when declaring the ufw class
+#  class { '::stacks::puppetmaster': }
+#
+# @param activemq (Boolean) Manage activemq on this node.
+# @param foreman (Boolean) Manage foreman on this node.
+# @param foreman_proxy (Boolean) Manage foreman_proxy on this node.
+# @param haproxy_member (Boolean) Manage haproxy_member on this node.
+# @param memcached (Boolean) Manage memcached on this node.
+# @param mcollective (Boolean) Manage mcollective on this node.
+# @param mcollective_r10k (Boolean) Manage mcollective_r10k on this node.
+# @param puppetdb (Boolean) Manage puppetdb on this node.
+# @param puppetmaster (Boolean) Manage puppetmaster on this node.
+# @param r10k (Boolean) Manage r10k on this node.
 class stacks::puppetmaster (
   $activemq         = false,
   $foreman          = false,
