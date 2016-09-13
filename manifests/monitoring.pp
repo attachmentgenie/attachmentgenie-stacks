@@ -13,9 +13,9 @@ class stacks::monitoring (
     $logstash,
   )
   if $collectd {
-    class { '::collectd': }
+    class { '::profiles::collectd': }
   }
   if $logstash {
-    class { '::logstash': }
+    class { '::profiles::logstash': }
   }
 }
