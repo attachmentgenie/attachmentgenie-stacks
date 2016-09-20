@@ -5,9 +5,11 @@
 #
 # @param apache (Boolean) Manage apache on this node.
 # @param haproxy_balancermember (Boolean) Register this node with the haproxy instance.
+# @param nginx (Boolean) Manage nginx on this node.
 class stacks::website (
   $apache = false,
   $haproxy_balancermember = false,
+  $nginx = false,
 ){
   validate_bool(
     $apache,
@@ -23,5 +25,8 @@ class stacks::website (
       ipaddresses       => $::ipaddress_eth1,
       ports             => '80',
     }
+  }
+  if $nginx {
+    class { '::profiles::nginx': }
   }
 }
