@@ -1,12 +1,27 @@
+# This class can be used install testing components.
+#
+# @example when declaring the testing class
+#  class { '::stacks::testing': }
+#
+# @param develop (Boolean) Manage ability to develop on this node.
+# @param jenkins (Boolean) Manage jenkins on this node.
+# @param package (Boolean) Manage abiltiy to create packages on this node.
 class stacks::testing (
-  $motd = false,
+  $develop = false,
+  $jenkins = false,
+  $package = false,
 ){
-  class { '::profiles::jenkins': }
-  class { '::profiles::ruby': } ->
-  class { '::profiles::package': }
-  class { '::profiles::php': }
-
-  if $motd {
-    motd::register{ 'Stack   : testing': }
+  validate_bool( $develop,
+    $jenkins,
+    $package
+  )
+  if $develop {
+    class { '::profiles::develop': }
+  }
+  if $jenkins {
+    class { '::profiles::jenkins': }
+  }
+  if $package {
+    class { '::profiles::package': }
   }
 }
