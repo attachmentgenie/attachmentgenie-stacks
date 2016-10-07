@@ -1,17 +1,14 @@
+# This class can be used install gitlab components
+#
+# @example when declaring the gitlab gclass
+#  class { '::stacks::gitlab': }
+#
+# @param gitlab (Boolean) Manage gitlab on this node.
 class stacks::gitlab (
-  $host = $::fqdn,
-  $motd = false,
-  $port = '8080',
+  $gitlab = false,
 ) {
-  class { gitlab :
-    external_url => "http://${host}",
-    nginx        => {
-      'enable'      => true,
-      'listen_port' => 8081,
-    }
-  }
-
-  if $motd {
-    motd::register{ 'Stack   : gitlab': }
+  validate_bool( $gitlab )
+  if $gitlab {
+    class { '::profiles::gitlab': }
   }
 }
