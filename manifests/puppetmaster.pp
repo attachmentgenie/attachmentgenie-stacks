@@ -10,6 +10,7 @@
 # @param memcached (Boolean) Manage memcached on this node.
 # @param mcollective (Boolean) Manage mcollective on this node.
 # @param mcollective_r10k (Boolean) Manage mcollective_r10k on this node.
+# @param puppet (Boolean) Manage puppet on this node.
 # @param puppetdb (Boolean) Manage puppetdb on this node.
 # @param puppetmaster (Boolean) Manage puppetmaster on this node.
 # @param r10k (Boolean) Manage r10k on this node.
@@ -21,6 +22,7 @@ class stacks::puppetmaster (
   $memcached        = false,
   $mcollective      = false,
   $mcollective_r10k = false,
+  $puppet           = false,
   $puppetdb         = false,
   $puppetmaster     = false,
   $r10k             = false,
@@ -35,9 +37,6 @@ class stacks::puppetmaster (
   validate_bool($puppetmaster)
   validate_bool($r10k)
 
-  if !defined(Class['::profiles::puppet']) {
-    class { '::profiles::puppet': }
-  }
   if $activemq {
     class { '::profiles::activemq': }
   }
@@ -73,6 +72,9 @@ class stacks::puppetmaster (
       Class['::profiles::mcollective'] ->
       Class['::r10k::mcollective']
     }
+  }
+  if $puppet {
+    class { '::profiles::puppet': }
   }
   if $puppetdb {
     class { '::profiles::puppetdb': }
