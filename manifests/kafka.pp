@@ -15,7 +15,7 @@ class stacks::kafka (
   if $kafka {
     class {'::profiles::kafka':}
     if $zookeeper {
-      Service['zookeeper-server'] -> Service['kafka']
+      Service['zookeeper'] -> Service['kafka']
     }
   }
   if $zookeeper {
