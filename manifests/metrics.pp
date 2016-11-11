@@ -16,7 +16,6 @@ class stacks::metrics (
     $prometheus,
   )
   if $grafana {
-    include ::profiles::apache
     include ::profiles::grafana
   }
   if $influxdb {
