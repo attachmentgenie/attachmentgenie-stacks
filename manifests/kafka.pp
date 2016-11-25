@@ -1,3 +1,10 @@
+# This class can be used install kafka and zookeeper.
+#
+# @example when declaring the kafka class
+#  class { '::stacks::kafka': }
+#
+# @param kafka (Boolean) Manage kafka on this node.
+# @param zookeeper (Boolean) Manage zookeeper on this node.
 class stacks::kafka (
   $kafka = false,
   $zookeeper = false,
@@ -7,6 +14,9 @@ class stacks::kafka (
   )
   if $kafka {
     class {'::profiles::kafka':}
+    if $zookeeper {
+      Service['zookeeper'] -> Service['kafka']
+    }
   }
   if $zookeeper {
     class { '::profiles::zookeeper':}
