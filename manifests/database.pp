@@ -4,6 +4,7 @@
 #  class { '::stacks::metrics': }
 #
 # @param influxdb (Boolean) Manage influxdb on this node.
+# @param mysql (Boolean) Manage mysql on this node.
 # @param postgresql (Boolean) Manage postgresql on this node.
 class stacks::database (
   $influxdb   = false,

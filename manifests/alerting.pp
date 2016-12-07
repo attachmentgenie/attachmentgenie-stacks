@@ -4,8 +4,8 @@
 #  class { '::stacks::alerting': }
 #
 # @param alertmanager (Boolean) Manage alertmanager on this node.
-# @param icinga (Boolean) Manage icinga on this node.
-# @param icingaweb (Boolean) Manage icingaweb on this node.
+# @param icinga2 (Boolean) Manage icinga on this node.
+# @param icinga2_web (Boolean) Manage icingaweb on this node.
 class stacks::alerting (
   $alertmanager = false,
   $icinga2      = false,

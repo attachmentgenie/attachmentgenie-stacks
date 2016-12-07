@@ -5,6 +5,7 @@
 #
 # @param java (Boolean) Manage java on this node.
 # @param golang (Boolean) Manage golang on this node.
+# @param nodejs (Boolean) Manage nodejs on this node.
 # @param php (Boolean) Manage php on this node.
 # @param python (Boolean) Manage python on this node.
 # @param ruby (Boolean) Manage ruby on this node.
@@ -12,6 +13,7 @@
 class stacks::runtime (
   $java   = false,
   $golang = false,
+  $nodejs = false,
   $php    = false,
   $python = false,
   $ruby   = false,
@@ -20,6 +22,7 @@ class stacks::runtime (
   validate_bool(
     $java,
     $golang,
+    $nodejs,
     $php,
     $python,
     $ruby,
@@ -30,6 +33,9 @@ class stacks::runtime (
   }
   if $golang {
     include ::profiles::golang
+  }
+  if $nodejs {
+    include ::profiles::nodejs
   }
   if $php {
     include ::profiles::php
