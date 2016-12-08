@@ -11,6 +11,6 @@ class stacks::mail (
     $mailhog,
   )
   if $mailhog {
-    include ::profiles::mailhog
+    class { '::profiles::mailhog': }
   }
 }

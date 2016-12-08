@@ -17,12 +17,12 @@ class stacks::alerting (
     $icinga2_web
   )
   if $alertmanager {
-    include ::profiles::alertmanager
+    class { '::profiles::alertmanager': }
   }
   if $icinga2 {
-    include ::profiles::icinga2
+    class { '::profiles::icinga2': }
   }
   if $icinga2_web {
-    include ::profiles::icinga2_web
+    class { '::profiles::icinga2_web': }
   }
 }

@@ -10,6 +10,6 @@ class stacks::neo4j (
   validate_bool($neo4j)
 
   if $neo4j {
-    include ::profiles::neo4j
+    class { '::profiles::neo4j': }
   }
 }

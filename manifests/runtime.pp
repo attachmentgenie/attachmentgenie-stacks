@@ -29,24 +29,24 @@ class stacks::runtime (
     $scala,
   )
   if $java {
-    include ::profiles::java
+    class { '::profiles::java': }
   }
   if $golang {
-    include ::profiles::golang
+    class { '::profiles::golang': }
   }
   if $nodejs {
-    include ::profiles::nodejs
+    class { '::profiles::nodejs': }
   }
   if $php {
-    include ::profiles::php
+    class { '::profiles::php': }
   }
   if $python {
-    include ::profiles::python
+    class { '::profiles::python': }
   }
   if $ruby {
-    include ::profiles::ruby
+    class { '::profiles::ruby': }
   }
   if $scala {
-    include ::profiles::scala
+    class { '::profiles::scala': }
   }
 }

@@ -14,9 +14,9 @@ class stacks::logging (
     $kibana,
   )
   if $elasticsearch {
-    include ::profiles::elasticsearch
+    class { '::profiles::elasticsearch': }
   }
   if $kibana {
-    class { '::profiles::kibana':}
+    class { '::profiles::kibana': }
   }
 }

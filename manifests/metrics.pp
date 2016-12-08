@@ -13,9 +13,9 @@ class stacks::metrics (
     $prometheus,
   )
   if $grafana {
-    include ::profiles::grafana
+    class { '::profiles::grafana': }
   }
   if $prometheus {
-    include ::profiles::prometheus
+    class { '::profiles::prometheus': }
   }
 }
