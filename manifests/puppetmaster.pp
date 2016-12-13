@@ -60,4 +60,5 @@ class stacks::puppetmaster (
   if $r10k {
     class { '::profiles::r10k': }
   }
+
 }
