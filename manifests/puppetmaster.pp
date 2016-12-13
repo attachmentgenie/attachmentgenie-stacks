@@ -6,10 +6,7 @@
 # @param activemq (Boolean) Manage activemq on this node.
 # @param foreman (Boolean) Manage foreman on this node.
 # @param foreman_proxy (Boolean) Manage foreman_proxy on this node.
-# @param haproxy_member (Boolean) Manage haproxy_member on this node.
 # @param memcached (Boolean) Manage memcached on this node.
-# @param mcollective (Boolean) Manage mcollective on this node.
-# @param mcollective_r10k (Boolean) Manage mcollective_r10k on this node.
 # @param puppet (Boolean) Manage puppet on this node.
 # @param puppetdb (Boolean) Manage puppetdb on this node.
 # @param puppetmaster (Boolean) Manage puppetmaster on this node.
@@ -18,10 +15,7 @@ class stacks::puppetmaster (
   $activemq         = false,
   $foreman          = false,
   $foreman_proxy    = false,
-  $haproxy_member   = false,
   $memcached        = false,
-  $mcollective      = false,
-  $mcollective_r10k = false,
   $puppet           = false,
   $puppetdb         = false,
   $puppetmaster     = false,
@@ -32,8 +26,6 @@ class stacks::puppetmaster (
     $foreman,
     $foreman_proxy,
     $memcached,
-    $mcollective,
-    $mcollective_r10k,
     $puppetdb,
     $puppetmaster,
     $r10k,
@@ -49,24 +41,11 @@ class stacks::puppetmaster (
       Class['::foreman_proxy::register']
     }
   }
-  if $haproxy_member {
-    class { '::profiles::haproxy_balancermember': }
-  }
   if $memcached {
     class { '::profiles::memcached': }
     if $foreman and $memcached {
       Class['::memcached'] ->
       Class['::foreman']
-    }
-  }
-  if $mcollective {
-    if !defined(Class['::profiles::mcollective']) {
-      class { '::profiles::mcollective': }
-    }
-    if $mcollective_r10k {
-      class { '::profiles::mcollective_r10k': }
-      Class['::profiles::mcollective'] ->
-      Class['::r10k::mcollective']
     }
   }
   if $puppet {
