@@ -3,6 +3,7 @@
 # @example when declaring the runtime class
 #  class { '::stacks::runtime': }
 #
+# @param docker (Boolean) Manage docker on this node.
 # @param java (Boolean) Manage java on this node.
 # @param golang (Boolean) Manage golang on this node.
 # @param nodejs (Boolean) Manage nodejs on this node.
@@ -11,6 +12,7 @@
 # @param ruby (Boolean) Manage ruby on this node.
 # @param scala (Boolean) Manage scala on this node.
 class stacks::runtime (
+  $docker = false,
   $java   = false,
   $golang = false,
   $nodejs = false,
@@ -20,6 +22,7 @@ class stacks::runtime (
   $scala  = false,
 ) {
   validate_bool(
+    $docker,
     $java,
     $golang,
     $nodejs,
@@ -28,6 +31,9 @@ class stacks::runtime (
     $ruby,
     $scala,
   )
+  if $docker {
+    class { '::profiles::docker': }
+  }
   if $java {
     class { '::profiles::java': }
   }
