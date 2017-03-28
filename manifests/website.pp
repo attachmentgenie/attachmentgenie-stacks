@@ -1,23 +1,36 @@
+# == Class: stacks::website
+#
 # This class can be used install website components
+#
+# === Examples
 #
 # @example when declaring the website class
 #  class { '::stacks::website': }
 #
-# @param apache (Boolean) Manage apache on this node.
-# @param haproxy_balancermember (Boolean) Register this node with the haproxy instance.
-# @param nginx (Boolean) Manage nginx on this node.
+# === Parameters
+#
+# @param apache [Boolean] Manage apache on this node.
+# @param haproxy_balancermember [Boolean] Register this node with the haproxy instance.
+# @param nginx [Boolean] Manage nginx on this node.
+# @param uwsgi [Boolean] Manage uwsgi on this node.
+#
 class stacks::website (
-  $apache = false,
+  $apache                 = false,
   $haproxy_balancermember = false,
-  $nginx = false,
+  $nginx                  = false,
+  $uwsgi                  = false,
 ){
   validate_bool(
     $apache,
     $haproxy_balancermember,
+    $nginx,
+    $uwsgi,
   )
+
   if $apache {
     class { '::profiles::apache': }
   }
+
   if $haproxy_balancermember {
     @@haproxy::haproxy_balancermember { $::hostname:
       listening_service => 'platform-http',
@@ -26,7 +39,13 @@ class stacks::website (
       ports             => '80',
     }
   }
+
   if $nginx {
     class { '::profiles::nginx': }
   }
+
+  if $uwsgi {
+    class { '::profiles::uwsgi': }
+  }
+
 }
