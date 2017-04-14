@@ -29,8 +29,8 @@ class stacks::puppet (
   if $foreman {
     class { '::profiles::foreman': }
     if $foreman and $foreman_proxy {
-      Class['::foreman'] ->
-      Class['::foreman_proxy::register']
+      Class['::foreman']
+      -> Class['::foreman_proxy::register']
     }
   }
   if $puppet {
