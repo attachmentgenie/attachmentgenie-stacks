@@ -1,6 +1,6 @@
 require 'spec_helper'
-describe 'stacks::gitlab' do
+describe 'stacks::repo' do
   context 'with defaults for all parameters' do
-    it { should contain_class('stacks::gitlab') }
+    it { should contain_class('stacks::repo') }
   end
 end
