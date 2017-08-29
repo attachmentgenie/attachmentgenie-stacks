@@ -3,28 +3,20 @@
 # @example when declaring the bootstrap class
 #  class { '::stacks::bootstrap': }
 #
-# @param accounts (Boolean) Manage accounts on this node.
-# @param firewall (Boolean) Manage the firewall on this node.
-# @param ntp (Boolean) Manage the time settings for this node.
-# @param puppet (Boolean) Manage puppet on this node.
-# @param repos (Boolean) Manage repositories on this node.
-# @param ssh (Boolean) Manage ssh on this node.
+# @param accounts Manage accounts on this node.
+# @param firewall Manage the firewall on this node.
+# @param ntp Manage the time settings for this node.
+# @param puppet Manage puppet on this node.
+# @param repos Manage repositories on this node.
+# @param ssh Manage ssh on this node.
 class stacks::bootstrap (
-  $accounts = false,
-  $firewall = false,
-  $ntp      = false,
-  $puppet   = false,
-  $repos    = false,
-  $ssh      = false,
+  Boolean $accounts = false,
+  Boolean $firewall = false,
+  Boolean $ntp      = false,
+  Boolean $puppet   = false,
+  Boolean $repos    = false,
+  Boolean $ssh      = false,
 ) {
-  validate_bool(
-    $accounts,
-    $firewall,
-    $ntp,
-    $puppet,
-    $repos,
-    $ssh,
-  )
   if $accounts{
     class { '::profiles::accounts': }
   }
